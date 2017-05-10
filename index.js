@@ -4,27 +4,41 @@ import $ from 'jquery'
 let endX,startX;
 let index = 1;
 let $list = $('.list'), $items = $('.item'), $dots = $('li');
+let timer;
 
-$list.css('width', $items.length * 640 + 'px');
+$list.css('width', $items.length * 640 + 'px');  // 动态配置父元素的宽度
 
 $('.list').on('touchstart',function(e){
+
 	startX = ( e.touches && e.touches[0] ? e.touches[0] : e ).pageX;
+
 }).on('touchmove',function(e){
+
 	endX = ( e.touches && e.touches[0] ? e.touches[0] : e ).pageX;
+
 }).on('touchend',function(){
-	if( endX - startX > 50 && index > 1){  // 向右滑
-		index--;
-		animate(index);
-	}else if( startX - endX > 50 && index < $items.length){   // 向左滑
-		index++;
-		animate(index);
+
+	if( endX - startX > 50 ){   // 向右滑
+		if(index > 1){
+			index--;
+		}else{                 // 第一个图片位置，向右滑，回到最后一个图片位置
+			index = $items.length;
+		}
+	}else if( startX - endX > 50 ){   // 向左滑
+		if(index < $items.length){
+			index++;
+		}else{               // 最后一个位置向左滑，回到第一个图片位置
+			index = 1;
+		}
 	}
+	animate(index);
 });
 
-function animate(index){
+function animate(i){
 	$list.css({
-		'transform':`translateX(${(index-1)*(-640)}px)`,
-		'-webkit-transform':`translateX(${(index-1)*(-640)}px)`
+		'transform':`translate3d(${(i-1)*(-640)}px,0,0)`,
+		'-webkit-transform':`translate3d(${(i-1)*(-640)}px,0,0)`
 	})
-	$('li.index'+index).addClass('active').siblings().removeClass('active');
+	$('li.index'+i).addClass('active').siblings().removeClass('active');
 }
+
