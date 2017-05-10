@@ -36,18 +36,19 @@ html,body{
 .item5{
 	background: url(images/5.png);
 }
-ul{
+.dot{
 	list-style: none;
 	display: flex;
 	justify-content: center;
 }
-ul li{
+.dot span{
+	display: inline-block;
 	width: 10px;
 	height: 10px;
 	background-color: #999;
 	border-radius: 50%;
 	margin: 10px;
 }
-ul li.active{
+.dot span.active{
 	background-color: #ff6815;
 }

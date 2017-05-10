@@ -39,6 +39,19 @@ function animate(i){
 		'transform':`translate3d(${(i-1)*(-640)}px,0,0)`,
 		'-webkit-transform':`translate3d(${(i-1)*(-640)}px,0,0)`
 	})
-	$('li.index'+i).addClass('active').siblings().removeClass('active');
+	$('span.index'+i).addClass('active').siblings().removeClass('active');
 }
 
+function loop(i){   // 循环向左
+	if( i < $items.length ){  
+		i++
+	}else{
+		i = 1;
+	}
+	animate(i)
+	timer = setTimeout(function() {
+		loop(i);
+	}, 3000);
+}
+
+loop(index)
