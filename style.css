@@ -1,0 +1,53 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+.wrap{
+	width: 100%;
+	overflow: hidden;
+}
+.list{
+	position: relative;
+	/*width: 3200px;*/
+	display: flex;
+}
+.item{
+	width: 640px;
+	height: 390px;
+	background-size: cover;
+}
+.item1{
+	background: url(images/1.png);
+}
+.item2{
+	background: url(images/2.png);
+}
+.item3{
+	background: url(images/3.png);
+}
+.item4{
+	background: url(images/4.png);
+}
+.item5{
+	background: url(images/5.png);
+}
+ul{
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+ul li{
+	width: 10px;
+	height: 10px;
+	background-color: #999;
+	border-radius: 50%;
+	margin: 10px;
+}
+ul li.active{
+	background-color: #ff6815;
+}
