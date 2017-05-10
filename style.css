@@ -13,8 +13,9 @@ html,body{
 }
 .list{
 	position: relative;
-	/*width: 3200px;*/
 	display: flex;
+	transition : left 1s;
+	left: 0;
 }
 .item{
 	width: 640px;
