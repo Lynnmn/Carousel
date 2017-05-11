@@ -13,7 +13,9 @@ html,body{
 }
 .list{
 	position: relative;
-	display: flex;
+	width: 640px;
+	height: 390px;
+/*	display: flex;*/
 	transition : left 1s;
 	left: 0;
 }
@@ -21,20 +23,26 @@ html,body{
 	width: 640px;
 	height: 390px;
 	background-size: cover;
+	position: absolute;
 }
 .item1{
+	left: 0;
 	background: url(images/1.png);
 }
 .item2{
+	left: 640px;
 	background: url(images/2.png);
 }
 .item3{
+	left: 1280px;
 	background: url(images/3.png);
 }
 .item4{
+	left: 1920px;
 	background: url(images/4.png);
 }
 .item5{
+	left: 2560px;
 	background: url(images/5.png);
 }
 .dot{
