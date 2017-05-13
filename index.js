@@ -20,10 +20,8 @@ function loop(i){   // 循环向左
 	}, 2000);
 }
 
-// loop(index);
-
 $('.list').on('touchstart',function(e){
-	// clearTimeout(timer);
+	
 	startX = ( e.touches && e.touches[0] ? e.touches[0] : e ).pageX;
 
 }).on('touchmove',function(e){
@@ -38,62 +36,25 @@ $('.list').on('touchstart',function(e){
 		}else{                 // 第一个图片位置，向右滑，回到最后一个图片位置
 			index = $items.length;
 		}
-		animateRight();
 	}else if( startX - endX > 50 ){   // 向左滑
 		if(index < $items.length){
 			index++;
 		}else{               // 最后一个位置向左滑，回到第一个图片位置
 			index = 1;
 		}
-		animateLeft();
+		
 	}
+	animate(index);
 });
 
-let j = 0;
 let l = $items.length, 
 	w = $('.item').css('width');
-function animateLeft(){
-	j++;
+function animate(i){
 	$list.css({
-		'left': -j*parseInt(w) + 'px'
+		'left': -(i-1)*parseInt(w) + 'px'
 	});
-	
-	if(j > l-1){
-		var index = j % l + 1,
-			totalLeft = -parseInt($list.css('left'));
-		$('.item'+index).css({
-			'left': totalLeft + parseInt(w) + 'px'
-		});
-		$('span.index'+index).addClass('active').siblings().removeClass('active');
-	}else{
-		$('span.index'+(j+1)).addClass('active').siblings().removeClass('active');
-	}
+	$('span.index'+i).addClass('active').siblings().removeClass('active');
 	
 }
-function animateRight(){
-	j--;
-	if(j < 0 ){
-		var index = j % l == 0 ? 1 : j % l + (l+1),
-			totalLeft = parseInt($list.css('left'));
-		$('.item'+index).css({
-			'left': -(totalLeft + parseInt(w)) + 'px'
-		});
-		$('span.index'+index).addClass('active').siblings().removeClass('active');
-		$list.css({
-			'left': -j*parseInt(w) + 'px'
-		});	
-	}else{
-		console.log(j)
-		$list.css({
-			'left': -j*parseInt(w) + 'px'
-		});	
-		var index = j % l + 1,
-			totalLeft = -parseInt($list.css('left'));
-		$('.item'+index).css({
-			'left': totalLeft + parseInt(w) + 'px'
-		});
-		$('span.index'+(j+1)).addClass('active').siblings().removeClass('active');
-	}
-			
-}
+
 
