@@ -6,7 +6,7 @@ let index = 1;
 let $list = $('.list'), $items = $('.item'), $dots = $('li');
 let timer;
 
-// $list.css('width', $items.length * 640 + 'px');  // 动态配置父元素的宽度
+$list.css('width', $items.length * 640 + 'px');  // 动态配置父元素的宽度
 
 function loop(i){   // 循环向左
 	if( i < $items.length ){  
